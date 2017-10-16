@@ -21,7 +21,7 @@ def matcher(ctx):
         cp.read_string(ctx[ini].data().decode('utf-8'))
         dirs += cp.get('compare','dirs').split()
         if 'includes' in cp:
-            inis += cp['includes'].values()
+            inis += map(str, cp['includes'].values())
     if not dirs:
         return None
     return match(ctx.repo().root, ctx.repo().root, patterns=[str(d)+'/locales/en-US/**' for d in dirs])
